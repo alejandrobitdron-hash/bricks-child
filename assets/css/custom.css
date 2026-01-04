@@ -4,17 +4,21 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  user-select: none;
+  outline: none;
 
-  /* botón blanco */
+  /* estilo base */
   background: #ffffff;
   color: #000000;
   border: none;
   border-radius: 999px;
   padding: 12px 24px;
   font-size: 16px;
+  font-weight: 500;
+  transition: background 200ms ease, transform 100ms ease;
 }
 
-/* ripple */
+/* Ripple */
 .btn-ripple-white::after {
   content: "";
   position: absolute;
@@ -22,32 +26,40 @@
   left: 50%;
   width: 20px;
   height: 20px;
-
-  /* ripple más visible */
   background: rgba(0, 0, 0, 0.25);
-
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   pointer-events: none;
 }
 
-/* activar ripple */
+/* Activación del ripple */
 .btn-ripple-white:active::after {
   animation: ripple 500ms ease-out;
 }
 
+/* Ripple keyframes */
 @keyframes ripple {
   0% {
     transform: translate(-50%, -50%) scale(0);
-    opacity: 0.25; /* más visible al inicio */
+    opacity: 0.25;
   }
   50% {
-    transform: translate(-50%, -50%) scale(8); /* expansión más rápida */
+    transform: translate(-50%, -50%) scale(8);
     opacity: 0.2;
   }
   100% {
-    transform: translate(-50%, -50%) scale(15); /* cubre todo el botón */
+    transform: translate(-50%, -50%) scale(15);
     opacity: 0;
   }
+}
+
+/* Hover - cambio suave de fondo */
+.btn-ripple-white:hover {
+  background: #f2f2f2;
+}
+
+/* Active - ligero “presionado” */
+.btn-ripple-white:active {
+  transform: scale(0.97);
 }
