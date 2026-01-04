@@ -1,13 +1,13 @@
 /* Custom CSS */
 
-.btn-ripple {
+.btn-ripple-white {
   position: relative;
   overflow: hidden;
   cursor: pointer;
 
-  /* estilo base */
-  background: #34d399;
-  color: #000;
+  /* botón blanco */
+  background: #ffffff;
+  color: #000000;
   border: none;
   border-radius: 999px;
   padding: 12px 24px;
@@ -15,29 +15,32 @@
 }
 
 /* ripple */
-.btn-ripple::after {
+.btn-ripple-white::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.4);
+
+  /* ripple oscuro sutil */
+  background: rgba(0, 0, 0, 0.15);
+
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   pointer-events: none;
 }
 
-/* activación */
-.btn-ripple:active::after {
+/* activar ripple */
+.btn-ripple-white:active::after {
   animation: ripple 600ms ease-out;
 }
 
 @keyframes ripple {
   0% {
     transform: translate(-50%, -50%) scale(0);
-    opacity: 0.6;
+    opacity: 0.25;
   }
   100% {
     transform: translate(-50%, -50%) scale(15);
