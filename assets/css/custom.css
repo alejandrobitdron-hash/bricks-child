@@ -1,29 +1,13 @@
 /* Custom CSS */
-
 /* =============================
-   Clase base: btn-ripple
-   Contiene todo lo común
+   Efecto ripple base
 ============================= */
 .btn-ripple {
   position: relative;
   overflow: hidden;
-  cursor: pointer;
-  user-select: none;
-  outline: none;
-  border: none;
-  border-radius: 999px;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: background 200ms ease, transform 100ms ease;
-
-  /* colores por defecto */
-  background: #34d399; /* verde */
-  color: #fff;
 }
 
-/* Ripple effect común */
+/* Ripple effect */
 .btn-ripple::after {
   content: "";
   position: absolute;
@@ -36,10 +20,10 @@
   opacity: 0;
   pointer-events: none;
 
-  /* valores por defecto de ripple */
-  background: rgba(255, 255, 255, 0.4);
-  --ripple-opacity-start: 0.4;
-  --ripple-opacity-mid: 0.3;
+  /* Valores por defecto (se pueden sobrescribir en modificadores) */
+  background: rgba(0, 0, 0, 0.2);
+  --ripple-opacity-start: 0.2;
+  --ripple-opacity-mid: 0.15;
 }
 
 .btn-ripple:active::after {
@@ -61,24 +45,14 @@
   }
 }
 
-/* Hover y active base */
-.btn-ripple:hover {
-  filter: brightness(1.05);
-}
-
+/* Active ligero: se puede mantener si quieres efecto presionado */
 .btn-ripple:active {
   transform: scale(0.97);
 }
 
 /* =============================
-   Modificador: btn-ripple-light
-   Ajusta para fondo blanco
+   Modificador: fondo blanco
 ============================= */
-.btn-ripple-light {
-  background: #ffffff;
-  color: #000000;
-}
-
 .btn-ripple-light::after {
   background: rgba(0, 0, 0, 0.15); /* ripple negro sutil */
   --ripple-opacity-start: 0.15;
@@ -86,17 +60,10 @@
 }
 
 /* =============================
-   Modificador: btn-ripple-dark
-   Ajusta para fondo oscuro / verde
+   Modificador: fondo oscuro / verde
 ============================= */
-.btn-ripple-dark {
-  background: #34d399;
-  color: #ffffff;
-}
-
 .btn-ripple-dark::after {
   background: rgba(255, 255, 255, 0.4); /* ripple blanco */
   --ripple-opacity-start: 0.4;
   --ripple-opacity-mid: 0.3;
 }
-
