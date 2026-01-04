@@ -1,29 +1,26 @@
 /* Custom CSS */
-/* =============================
-   Efecto ripple base
-============================= */
+/* Efecto ripple base */
 .btn-ripple {
   position: relative;
   overflow: hidden;
 }
 
-/* Ripple effect */
 .btn-ripple::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 20px;
+  width: 30px;               /* un poco más grande */
+  height: 30px;              /* un poco más grande */
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   pointer-events: none;
 
-  /* Valores por defecto (se pueden sobrescribir en modificadores) */
-  background: rgba(0, 0, 0, 0.2);
-  --ripple-opacity-start: 0.2;
-  --ripple-opacity-mid: 0.15;
+  /* default ripple (sobre botones oscuros) */
+  background: rgba(255, 255, 255, 0.4);
+  --ripple-opacity-start: 0.4;
+  --ripple-opacity-mid: 0.3;
 }
 
 .btn-ripple:active::after {
@@ -45,25 +42,25 @@
   }
 }
 
-/* Active ligero: se puede mantener si quieres efecto presionado */
+/* Efecto presionado */
 .btn-ripple:active {
   transform: scale(0.97);
 }
 
 /* =============================
-   Modificador: fondo blanco
+   Ripple para botón claro
 ============================= */
 .btn-ripple-light::after {
-  background: rgba(0, 0, 0, 0.15); /* ripple negro sutil */
-  --ripple-opacity-start: 0.15;
-  --ripple-opacity-mid: 0.1;
+  background: rgba(0, 0, 0, 0.25); /* más visible */
+  --ripple-opacity-start: 0.25;
+  --ripple-opacity-mid: 0.2;
 }
 
 /* =============================
-   Modificador: fondo oscuro / verde
+   Ripple para botón oscuro / verde
 ============================= */
 .btn-ripple-dark::after {
-  background: rgba(255, 255, 255, 0.4); /* ripple blanco */
+  background: rgba(255, 255, 255, 0.4);
   --ripple-opacity-start: 0.4;
   --ripple-opacity-mid: 0.3;
 }
