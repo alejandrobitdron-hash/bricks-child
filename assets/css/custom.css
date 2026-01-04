@@ -1,52 +1,59 @@
 /* Custom CSS */
 
-.btn-ripple-white {
+/* =============================
+   Clase base: btn-ripple
+   Contiene todo lo común
+============================= */
+.btn-ripple {
   position: relative;
   overflow: hidden;
   cursor: pointer;
   user-select: none;
   outline: none;
-
-  /* estilo base */
-  background: #ffffff;
-  color: #000000;
   border: none;
   border-radius: 999px;
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 500;
+  text-transform: uppercase;
   transition: background 200ms ease, transform 100ms ease;
+
+  /* colores por defecto */
+  background: #34d399; /* verde */
+  color: #fff;
 }
 
-/* Ripple */
-.btn-ripple-white::after {
+/* Ripple effect común */
+.btn-ripple::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 20px;
   height: 20px;
-  background: rgba(0, 0, 0, 0.25);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   pointer-events: none;
+
+  /* valores por defecto de ripple */
+  background: rgba(255, 255, 255, 0.4);
+  --ripple-opacity-start: 0.4;
+  --ripple-opacity-mid: 0.3;
 }
 
-/* Activación del ripple */
-.btn-ripple-white:active::after {
+.btn-ripple:active::after {
   animation: ripple 500ms ease-out;
 }
 
-/* Ripple keyframes */
 @keyframes ripple {
   0% {
     transform: translate(-50%, -50%) scale(0);
-    opacity: 0.25;
+    opacity: var(--ripple-opacity-start);
   }
   50% {
     transform: translate(-50%, -50%) scale(8);
-    opacity: 0.2;
+    opacity: var(--ripple-opacity-mid);
   }
   100% {
     transform: translate(-50%, -50%) scale(15);
@@ -54,12 +61,42 @@
   }
 }
 
-/* Hover - cambio suave de fondo */
-.btn-ripple-white:hover {
-  background: #f2f2f2;
+/* Hover y active base */
+.btn-ripple:hover {
+  filter: brightness(1.05);
 }
 
-/* Active - ligero “presionado” */
-.btn-ripple-white:active {
+.btn-ripple:active {
   transform: scale(0.97);
 }
+
+/* =============================
+   Modificador: btn-ripple-light
+   Ajusta para fondo blanco
+============================= */
+.btn-ripple-light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.btn-ripple-light::after {
+  background: rgba(0, 0, 0, 0.15); /* ripple negro sutil */
+  --ripple-opacity-start: 0.15;
+  --ripple-opacity-mid: 0.1;
+}
+
+/* =============================
+   Modificador: btn-ripple-dark
+   Ajusta para fondo oscuro / verde
+============================= */
+.btn-ripple-dark {
+  background: #34d399;
+  color: #ffffff;
+}
+
+.btn-ripple-dark::after {
+  background: rgba(255, 255, 255, 0.4); /* ripple blanco */
+  --ripple-opacity-start: 0.4;
+  --ripple-opacity-mid: 0.3;
+}
+
