@@ -1,66 +1,118 @@
 /* Custom CSS */
-/* Efecto ripple base */
+/* ----------------------------
+   Efecto ripple base
+---------------------------- */
 .btn-ripple {
   position: relative;
   overflow: hidden;
+  transition: transform 100ms ease;
 }
 
+/* Ripple effect */
 .btn-ripple::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30px;               /* un poco más grande */
-  height: 30px;              /* un poco más grande */
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   pointer-events: none;
-
-  /* default ripple (sobre botones oscuros) */
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.4); /* default ripple */
   --ripple-opacity-start: 0.4;
   --ripple-opacity-mid: 0.3;
 }
 
 .btn-ripple:active::after {
-  animation: ripple 500ms ease-out;
+  animation: ripple 700ms ease-out;
 }
 
 @keyframes ripple {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: var(--ripple-opacity-start);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(8);
-    opacity: var(--ripple-opacity-mid);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(15);
-    opacity: 0;
-  }
+  0% { transform: translate(-50%, -50%) scale(0); opacity: var(--ripple-opacity-start); }
+  50% { transform: translate(-50%, -50%) scale(10); opacity: var(--ripple-opacity-mid); }
+  100% { transform: translate(-50%, -50%) scale(20); opacity: 0; }
 }
 
-/* Efecto presionado */
-.btn-ripple:active {
-  transform: scale(0.97);
+/* Presionado */
+.btn-ripple:active { transform: scale(0.97); }
+
+/* ----------------------------
+   Hover overlay base
+---------------------------- */
+.btn-ripple::before {
+  content: "";
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease, background 200ms ease;
 }
 
-/* =============================
-   Ripple para botón claro
-============================= */
+/* Hover visible general */
+.btn-ripple:hover::before {
+  opacity: 0.25; /* mucho más visible */
+}
+
+/* ----------------------------
+   Ripple + hover botón claro
+---------------------------- */
 .btn-ripple-light::after {
-  background: rgba(0, 0, 0, 0.25); /* más visible */
+  background: rgba(0, 0, 0, 0.25);
   --ripple-opacity-start: 0.25;
   --ripple-opacity-mid: 0.2;
 }
 
-/* =============================
-   Ripple para botón oscuro / verde
-============================= */
+.btn-ripple-light::before {
+  background: rgba(0, 0, 0, 0.25); /* overlay negro más visible */
+}
+
+/* ----------------------------
+   Ripple + hover botón oscuro
+---------------------------- */
 .btn-ripple-dark::after {
   background: rgba(255, 255, 255, 0.4);
   --ripple-opacity-start: 0.4;
   --ripple-opacity-mid: 0.3;
+}
+
+.btn-ripple-dark::before {
+  background: rgba(255, 255, 255, 0.55); /* overlay blanco más visible */
+}
+
+.shadow-sm {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);
+    --tw-shadow-color: rgb(16 185 129 / .3);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
+}
+.rounded {
+    border-radius: 24px;
+}
+.border-slate {
+   border: solid 1px #e2e8f080;
+}
+.brxe-button {
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    margin-block: 4px;
+}
+.brxe-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+}
+.brxe-button:active {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+}
+body.hero-section #brx-header section {
+    background-color:unset;
+}
+body.hero-section main > section:first-child {
+    margin-top: -76px;
+}
+.box-shadow {
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
